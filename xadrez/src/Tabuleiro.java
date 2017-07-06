@@ -13,7 +13,6 @@ package xadrez;
 public class Tabuleiro {
 
     private final Peca tab[][] = new Peca[8][8];
-    
 
     // implementar parte grafica.
     public Tabuleiro() {

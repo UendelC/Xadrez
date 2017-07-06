@@ -1,11 +1,16 @@
+package xadrez;
+
 public class Peao extends Peca{
   boolean firstMov;
   
-  public void Peao(){
-     this.firstMov = false;  
-  }
+  public Peao(byte x, byte y) {
+        this.posicao[0] = x;
+        this.posicao[1] = y;
+        this.firstMov = false;
+    } 
+  
   private boolean mover(){
-  	
+  	return true;
   }
   
 }

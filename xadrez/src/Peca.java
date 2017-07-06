@@ -1,3 +1,4 @@
+package xadrez;
 
 public class Peca {
    
@@ -17,7 +18,6 @@ public class Peca {
     public void setStatus(boolean status) {
         this.status = status;
     }
-
    
     public boolean isStatus() {
         return this.status;

@@ -1,4 +1,12 @@
+package xadrez;
+
 public class Bispo extends Peca {
+    
+    public Bispo(byte x, byte y) {
+        this.posicao[0] = x;
+        this.posicao[1] = y;
+    } 
+    
     private void Mover(){
     
     }
