@@ -1,3 +1,5 @@
+package xadrez;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -10,10 +12,11 @@
  */
 public class Torre extends Peca {
 
-    Torre(byte x, byte b) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
+    public Torre(byte x, byte y) {
+        this.posicao[0] = x;
+        this.posicao[1] = y;
+    }  
+    
      private boolean Mover(byte x, byte y){
          return x== this.posicao[0] ^ y == this.posicao[1];
     }
