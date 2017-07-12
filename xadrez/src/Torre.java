@@ -17,7 +17,10 @@ public class Torre extends Peca {
         this.posicao[1] = y;
     }  
     
-     private boolean Mover(byte x, byte y){
-         return x== this.posicao[0] ^ y == this.posicao[1];
+    @Override
+    public boolean caminhoValido(byte x, byte y) {
+        return x== this.posicao[0] ^ y == this.posicao[1];
     }
+        
+    
 }

@@ -9,6 +9,7 @@ package xadrez;
  *
  * @author victor
  */
+
 public class Usuario {
 
     private final boolean cor;
@@ -41,6 +42,20 @@ public class Usuario {
 
     public float getPercentual() {
         return percentual;
+    }
+
+    public boolean Mover(Peca p, byte x, byte y, Tabuleiro tab) {
+       
+        if (p.isCor() != this.cor) {
+            return false;
+        } else if (!p.caminhoValido(x, y)) {
+            return false;
+        } else {
+            
+
+        }
+
+        return true;
     }
 
 }

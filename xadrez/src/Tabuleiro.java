@@ -17,12 +17,6 @@ public class Tabuleiro {
     // implementar parte grafica.
     public Tabuleiro() {
 
-        for (int x = 0; x < 8; x++) {
-            for (int y = 0; y < 8; y++) {
-                this.tab[x][y] = new Peca();
-            }
-        }
-
        //define peoes
         for (byte x = 0; x < 8; x ++) {
                 tab[1][x] = new Peao(x, (byte) 0);
@@ -66,7 +60,12 @@ public class Tabuleiro {
          tab[0][3].setCor(true);
          tab[7][3] = new Rainha((byte)7, (byte) 4);
          tab[7][3].setCor(false);
+         
         
     }
+    
+    boolean temPeca(byte x, byte y){
+        return this.tab[x][y].isStatus();
+    }   
 
 }

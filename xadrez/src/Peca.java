@@ -1,11 +1,11 @@
 package xadrez;
 
-public class Peca {
+public abstract class Peca implements IPeca{
    
     protected  boolean cor; // false = preto    true = branco.
     protected final byte posicao[] = new byte[2];
     protected boolean status; // false = morto true = vivo.
-
+    
     public void Peca(byte x,byte y){
         this.posicao[0] = x;
         this.posicao[1] = y;
@@ -23,8 +23,14 @@ public class Peca {
         return this.status;
     }
     
+    
 //    public byte[] getPosicao(){
 //        return this.posicao;
 //    }
 //    
+
+    public boolean isCor() {
+        return cor;
+    }
+   
 }

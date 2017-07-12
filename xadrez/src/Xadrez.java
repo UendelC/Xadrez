@@ -15,6 +15,8 @@ public class Xadrez {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        
+        Jogo jg = new Jogo();
        
         
         // TODO code application logic here
