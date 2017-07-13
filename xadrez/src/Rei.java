@@ -17,8 +17,4 @@ public class Rei extends Peca {
         this.posicao[0] = x;
         this.posicao[1] = y;
     }
-
-    private void Mover() {
-
-    }
 }
