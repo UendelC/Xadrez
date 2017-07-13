@@ -8,9 +8,4 @@ public class Peao extends Peca{
         this.posicao[1] = y;
         this.firstMov = false;
     } 
-  
-  private boolean mover(){
-  	return true;
-  }
-  
 }
