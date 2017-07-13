@@ -44,7 +44,7 @@ public class Usuario {
         return percentual;
     }
 
-    public boolean Mover(Peca p, byte x, byte y, Tabuleiro tab) {
+    public boolean Mover(Peca p, byte x, byte y, Tabuleiro tab) { //poderia colocar um unico atributo posição
        
         if (p.isCor() != this.cor) {
             return false;
