@@ -9,19 +9,11 @@ package xadrez;
  *
  * @author victor
  */
-public class Xadrez {
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        
-        
-        
-        Jogo jg = new Jogo();
-       
-        
-        // TODO code application logic here
-    }
+public interface IRepositorio {
     
+    /**
+     *
+     * @return
+     */
+    boolean saveGame(Tabuleiro tab, Usuario u1, Usuario u2);
 }

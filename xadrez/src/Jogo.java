@@ -15,11 +15,19 @@ public class Jogo {
 
     public Jogo() {
         
-       // Usuario user1 = new Usuario();
-       // Usuario user2 = new Usuario();
+        //Usuario user1 = new Usuario("Victoe");
+        //Usuario user2 = new Usuario();
         Tabuleiro tab = new Tabuleiro();
         
     }  
+    
+    private void gameOver(Usuario userwin, Usuario userlose){
+        userwin.setVitorias();
+        userwin.setPercentual();
+        userlose.setDerrotas();
+        userlose.setPercentual();
+    }
+    
     
     
     

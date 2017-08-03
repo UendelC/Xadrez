@@ -12,7 +12,11 @@ package xadrez;
 public class Cavalo extends Peca {
     
     public Cavalo(byte x, byte y) {
-        this.posicao[0] = x;
-        this.posicao[1] = y;
+       super(x,y);
     } 
+
+    @Override
+    boolean caminhoValido(byte x, byte y) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

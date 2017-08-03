@@ -1,36 +1,49 @@
 package xadrez;
 
-public abstract class Peca implements IPeca{
-   
+public abstract class Peca {
+
     protected  boolean cor; // false = preto    true = branco.
-    protected final byte posicao[] = new byte[2];
+    protected byte posicao[] = new byte[2];
     protected boolean status; // false = morto true = vivo.
-    
-    public void Peca(byte x,byte y){
+
+    public Peca(byte x, byte y) {
         this.posicao[0] = x;
         this.posicao[1] = y;
     }
 
-    public void setCor(boolean cor) {
+    abstract boolean caminhoValido(byte x, byte y);
+
+    protected  void setCor(boolean cor) {
         this.cor = cor;
     }
 
-    public void setStatus(boolean status) {
-        this.status = status;
-    }
-   
-    public boolean isStatus() {
-        return this.status;
+    private byte[] getPosicao() {
+        return this.posicao;
     }
     
-    
-//    public byte[] getPosicao(){
-//        return this.posicao;
-//    }
-//    
+    protected void setPosicao(byte x, byte y) {
+        this.posicao[0] = x;
+        this.posicao[1] = y;
+    }
 
-    public boolean isCor() {
+    private boolean isCor() {
         return cor;
     }
-   
+    
+    protected boolean excluir(){
+        this.status = false;
+        
+        return true;
+    }
+
+    private boolean Mover(Usuario u, byte x, byte y, Tabuleiro t) {
+
+        if (this.isCor() != u.isCor() || !this.caminhoValido(x, y)) {
+            return false;
+        }
+        
+        //t.settab(this, x, y);
+
+        return true;
+    }
 }

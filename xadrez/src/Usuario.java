@@ -9,53 +9,60 @@ package xadrez;
  *
  * @author victor
  */
-
 public class Usuario {
 
-    private final boolean cor;
-    private final String nome;
+    private  boolean cor;
+    private  String nome;
     private int score; //quantas peças o jogador comeu neste jogo
-    private final float percentual;
+    private int vitorias;
+    private int derrotas;
+    private float  percentual;
 
-    public Usuario(boolean cor, String nome, float percentual, int score) {
+    protected Usuario(boolean cor, String nome, float percentual) {
         this.cor = cor;
         this.nome = nome;
         this.percentual = percentual;
         this.score = 0;
     }
 
-    public boolean isCor() {
+    protected boolean isCor() {
         return cor;
     }
 
-    public String getNome() {
+    protected int getVitorias() {
+        return vitorias;
+    }
+
+    protected void setVitorias() {
+        this.vitorias++;
+    }
+
+    protected int getDerrotas() {
+        return derrotas;
+    }
+
+    protected void setDerrotas() {
+        this.derrotas++;
+    }
+
+    protected void setPercentual() {
+        this.percentual = this.vitorias / (this.vitorias + this.derrotas);
+    }
+
+    protected String getNome() {
         return nome;
     }
 
-    public int getScore() {
+    protected int getScore() {
         return this.score;
     }
 
-    public void setScore(int score) {
+    protected void setScore(int score) {
         this.score = score;
     }
 
-    public float getPercentual() {
+    protected float getPercentual() {
         return percentual;
-    }
-
-    public boolean Mover(Peca p, byte x, byte y, Tabuleiro tab) { //poderia colocar um unico atributo posição
-       
-        if (p.isCor() != this.cor) {
-            return false;
-        } else if (!p.caminhoValido(x, y)) {
-            return false;
-        } else {
-            
-
-        }
-
-        return true;
     }
 
 }

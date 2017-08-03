@@ -10,16 +10,16 @@ package xadrez;
  *
  * @author victor
  */
-public class Torre extends Peca {
+
+public class Torre extends Peca implements IMovimenta{
 
     public Torre(byte x, byte y) {
-        this.posicao[0] = x;
-        this.posicao[1] = y;
-    }  
+       super(x,y);
+    }
     
     @Override
     public boolean caminhoValido(byte x, byte y) {
-        return x== this.posicao[0] ^ y == this.posicao[1];
+        return this.posicao[0] == x ^ this.posicao[1] == y;
     }
         
     

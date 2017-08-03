@@ -17,7 +17,7 @@ public class Tabuleiro {
     // implementar parte grafica.
     public Tabuleiro() {
 
-       //define peoes
+        //define peoes
         for (byte x = 0; x < 8; x ++) {
                 tab[1][x] = new Peao(x, (byte) 0);
                 tab[7][x] = new Peao(x, (byte) 7);
@@ -60,12 +60,21 @@ public class Tabuleiro {
          tab[0][3].setCor(true);
          tab[7][3] = new Rainha((byte)7, (byte) 4);
          tab[7][3].setCor(false);
-         
-        
     }
     
-    boolean temPeca(byte x, byte y){
-        return this.tab[x][y].isStatus();
-    }   
-
+     public void setPeca(Peca p, byte x, byte y){
+         p.setPosicao(x, y);
+         this.tab[x][y] = p;
+     }
+    
+     private  boolean excluirPeca(byte x, byte y){
+         
+         this.tab[x][y].excluir();
+         this.tab[x][y].setPosicao((byte)-1,(byte) -1);
+         this.tab[x][y] = null;
+         
+         
+         
+         return true;
+     }
 }

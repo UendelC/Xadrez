@@ -11,10 +11,20 @@ package xadrez;
  */
 public class Rei extends Peca {
 
-    private boolean check;
+    private final boolean check;
+    private final boolean firstMov;
+   
 
     public Rei(byte x, byte y) {
-        this.posicao[0] = x;
-        this.posicao[1] = y;
+        super(x,y);
+        this.check = false;
+        this.firstMov = false;
     }
+
+    @Override
+    boolean caminhoValido( byte x, byte y) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+   
 }
