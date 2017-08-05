@@ -21,7 +21,7 @@ public class Usuario {
     protected Usuario(boolean cor, String nome, float percentual) {
         this.cor = cor;
         this.nome = nome;
-        this.percentual = percentual;
+        this.percentual = percentual; //Devemos usar metodos setters aqui?
         this.score = 0;
     }
 
