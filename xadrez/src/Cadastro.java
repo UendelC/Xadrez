@@ -10,5 +10,5 @@ package xadrez;
  * @author victor
  */
 public class Cadastro {
-    
+    // classe que vai manipular o repositorio.
 }

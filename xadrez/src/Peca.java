@@ -4,15 +4,37 @@ public abstract class Peca {
 
     protected  boolean cor; // false = preto    true = branco.
     protected byte posicao[] = new byte[2];
-    protected boolean status; // false = morto true = vivo.
+    protected boolean status; // false = morto true = vivo
+    private String id;
 
-    public Peca(byte x, byte y) {
+     public Peca(byte x, byte y, boolean cor) {
         this.posicao[0] = x;
         this.posicao[1] = y;
+        this.cor = cor;
+        this.status = true;
+        this.putId();
     }
 
     abstract boolean caminhoValido(byte x, byte y);
+    
+    abstract void putId();
+    
+    public boolean isStatus() {
+        return status;
+    }
 
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public void setStatus(boolean status) {
+        this.status = status;
+    }
+
+    public String getId() {
+        return id;
+    }
+    
     protected  void setCor(boolean cor) {
         this.cor = cor;
     }
@@ -26,7 +48,7 @@ public abstract class Peca {
         this.posicao[1] = y;
     }
 
-    private boolean isCor() {
+    protected boolean isCor() {
         return cor;
     }
     

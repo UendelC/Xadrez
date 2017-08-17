@@ -16,9 +16,11 @@ public class Xadrez {
      */
     public static void main(String[] args) {
         
+        Tabuleiro t = new Tabuleiro();
+       Fachada f = new Fachada();
         
-        
-        Jogo jg = new Jogo();
+      f.imprimirTabuleiro(t);
+        //Jogo jg = new Jogo();
        
         
         // TODO code application logic here
