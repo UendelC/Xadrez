@@ -13,7 +13,14 @@ public class Cavalo extends Peca {
 
     @Override
     boolean caminhoValido(byte x, byte y) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        boolean a;
+        a = false;
+        if((posicao[1]==y+2 && posicao[0]==x+1)||(posicao[1]==y+2 && posicao[0]==x-1)||(posicao[1]==y+1 &&
+        posicao[0]==x+2)||(posicao[1]==y+1 && posicao[0]==x-2)||(posicao[1]==y-1 && posicao[0]==x+2)||(posicao[1]==y-1 &&
+            posicao[0]==x-2)||(posicao[1]==y-2 && posicao[0]==x+1)||(posicao[1]==y-2 && posicao[0]==x-1)){
+        a = true;
+        }   
+        return a;
     }
     
      @Override
