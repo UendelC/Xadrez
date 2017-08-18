@@ -14,8 +14,18 @@ public class Peao extends Peca{
     }
 
     @Override
-    boolean caminhoValido(byte x, byte y) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+   boolean caminhoValido(byte x, byte y) {
+        if(posicao[1]==y && (x-posicao[0])<2){
+            if(firstMov && (x-posicao[0])==2){
+                firstMov = false;
+                return true;
+            } else {
+                if((x-posicao[0])==1){
+                    return true;
+                }
+            }
+        }
+        return false;
     }
     
        @Override
