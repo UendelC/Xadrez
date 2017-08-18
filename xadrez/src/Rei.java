@@ -21,9 +21,12 @@ public class Rei extends Peca {
     }
 
     @Override
-    boolean caminhoValido(byte x, byte y) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+     boolean caminhoValido( byte x, byte y) {
+        byte xDiff = (byte) Math.abs(x - this.posicao[0]);
+	    byte yDiff = (byte) Math.abs(y - this.posicao[1]);
+	
+        return xDiff+yDiff < 2;
+     }
 
     @Override
     void putId() {
