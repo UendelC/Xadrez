@@ -16,8 +16,15 @@ public class Rainha extends Peca{
     }
     
     @Override
-    boolean caminhoValido(byte x, byte y) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+     boolean caminhoValido(byte x, byte y) {
+        boolean teste1, teste2;
+        byte xDiff = (byte) Math.abs(x - this.posicao[0]);
+	    byte yDiff = (byte) Math.abs(y - this.posicao[1]);
+	    teste1 = xDiff == yDiff;
+        
+        teste2 = posicao[0] == x ^ posicao[1] == y;
+        
+        return teste1 || teste2;
     }
 
       @Override
