@@ -21,12 +21,12 @@ public class Rei extends Peca {
     }
 
     @Override
-     boolean caminhoValido( byte x, byte y) {
+    boolean caminhoValido(byte x, byte y) {
         byte xDiff = (byte) Math.abs(x - this.posicao[0]);
-	    byte yDiff = (byte) Math.abs(y - this.posicao[1]);
-	
-        return xDiff+yDiff < 2;
-     }
+        byte yDiff = (byte) Math.abs(y - this.posicao[1]);
+
+        return xDiff + yDiff < 2;
+    }
 
     @Override
     void putId() {
@@ -35,6 +35,15 @@ public class Rei extends Peca {
         } else {
             this.setId("\u265A");
         }
+    }
+
+    @Override
+    protected boolean Mover(byte x, byte y, Tabuleiro t) {
+        if (this.isCor()) {
+            t.rei[0][0] = x;
+            t.rei[0][1] = y;
+        }
+        return super.Mover(x, y, t); //To change body of generated methods, choose Tools | Templates.
     }
 
 }

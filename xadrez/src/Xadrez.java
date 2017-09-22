@@ -15,15 +15,25 @@ public class Xadrez {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        
+        Usuario u[] = new Usuario[2];
+
+        u[0] = new Usuario(true, "Victor", 0);
+        u[1] = new Usuario(false, "maria", 0);
+
+        Fachada f = new Fachada();
         Tabuleiro t = new Tabuleiro();
-       Fachada f = new Fachada();
-        
-      f.imprimirTabuleiro(t);
-        //Jogo jg = new Jogo();
-       
-        
+
+        while (!f.alguem_Venceu(t, u)) {
+            for (int i = 0; i < 2; i++) {
+                f.imprimirTabuleiro(t);
+                if (!f.Movimentar(u[i], t)) {
+                    System.out.println("ocorreu um problema");
+                }
+                f.imprimirTabuleiro(t);
+            }
+        }
+
         // TODO code application logic here
     }
-    
+
 }

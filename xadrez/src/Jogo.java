@@ -15,13 +15,22 @@ public class Jogo {
 
     public Jogo() {
         
-        //Usuario user1 = new Usuario("Victoe");
-        //Usuario user2 = new Usuario();
-        Tabuleiro tab = new Tabuleiro();
-        
     }  
     
-    private void gameOver(Usuario userwin, Usuario userlose){
+    //retorna a cor do vencedor;
+    protected int analise(Tabuleiro t){
+        if(!(t.tab[t.rei[0][0]][t.rei[0][1]].isStatus())){
+            return 1;
+        }
+        if(!t.tab[t.rei[0][0]][t.rei[0][1]].isStatus()){
+            return 0;
+        }
+        return 3;
+    }
+    
+    //criar metodo fim de jogo se um dos reis recebeu status  = false;
+    
+    protected void gameOver(Usuario userwin, Usuario userlose){
         userwin.setVitorias();
         userwin.setPercentual();
         userlose.setDerrotas();
