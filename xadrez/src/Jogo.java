@@ -29,15 +29,10 @@ public class Jogo {
     }
     
     //criar metodo fim de jogo se um dos reis recebeu status  = false;
-    
     protected void gameOver(Usuario userwin, Usuario userlose){
         userwin.setVitorias();
         userwin.setPercentual();
         userlose.setDerrotas();
         userlose.setPercentual();
     }
-    
-    
-    
-    
 }
