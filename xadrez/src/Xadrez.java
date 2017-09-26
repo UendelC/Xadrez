@@ -20,7 +20,15 @@ public class Xadrez {
         Fachada f = new Fachada();
         Tabuleiro t = new Tabuleiro();
 
+        
+        //UIManager.put("OptionPane.messageFont", new FontUIResource(new Font("SanSerif", Font.PLAIN, 40))); // Aqui você muda o nome e tamanho da fonte.
+        
         f.setUsuarios(u);
+        
+        
+      
+        
+        
         
         while (!f.alguem_Venceu(t, u)) {
             for (int i = 0; i < 2; i++) {
