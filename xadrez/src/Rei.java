@@ -11,8 +11,8 @@ package xadrez;
  */
 public class Rei extends Peca {
 
-    private final boolean check;
-    private final boolean firstMov;
+    protected  boolean check;
+    private  boolean firstMov;
 
     public Rei(byte x, byte y, boolean cor) {
         super(x, y, cor);
@@ -20,8 +20,12 @@ public class Rei extends Peca {
         this.firstMov = false;
     }
 
+    public void setStatus(boolean status) {
+        this.status = status;
+    }
+
     @Override
-    boolean caminhoValido(byte x, byte y) {
+    boolean caminhoValido(byte x, byte y, Tabuleiro t) {
         byte xDiff = (byte) Math.abs(x - this.posicao[0]);
         byte yDiff = (byte) Math.abs(y - this.posicao[1]);
 
@@ -36,13 +40,13 @@ public class Rei extends Peca {
             this.setId("\u265A");
         }
     }
+    
+    public void setPosicao(byte[] posicao) {
+        this.posicao = posicao;
+    }
 
     @Override
-    protected boolean Mover(byte x, byte y, Tabuleiro t) {
-        if (this.isCor()) {
-            t.rei[0][0] = x;
-            t.rei[0][1] = y;
-        }
+    protected boolean Mover(byte x, byte y, Tabuleiro t) throws GameException {
         return super.Mover(x, y, t); //To change body of generated methods, choose Tools | Templates.
     }
 

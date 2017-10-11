@@ -2,7 +2,6 @@ package xadrez;
 
 import java.util.Scanner;
 
-
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -16,54 +15,46 @@ public class Fachada {
 
     Jogo j = new Jogo();
 
-    protected boolean setUsuarios(Usuario[] u) {
+    protected boolean setUsuarios() {
         Scanner s = new Scanner(System.in);
         String name;
         System.out.println("Digite o ID do primeiro jogador");
         name = s.next();
-        u[0] = new Usuario(true, name, 0);
+        this.j.u[0] = new Usuario(true, name, 0);
         System.out.println("Digite o ID do segundo jogador");
-        u[1] = new Usuario(false, name, 0);
+        name = s.next();
+        this.j.u[1] = new Usuario(false, name, 0);
         return true;
     }
 
-    protected boolean alguem_Venceu(Tabuleiro t, Usuario[] u) {
+    protected boolean alguem_Venceu(Tabuleiro t) {
         switch (j.analise(t)) {
             case 1:
-                System.out.println("O jogador " + u[0].getNome() + "venceu");
-                j.gameOver(u[0], u[1]);
+                System.out.println("O jogador " + this.j.u[0].getNome() + "venceu");
+                j.gameOver(0);
                 return true;
             case 2:
-                System.out.println("O jogador " + u[1].getNome() + "venceu");
-                j.gameOver(u[1], u[0]);
+                System.out.println("O jogador " + this.j.u[1].getNome() + "venceu");
+                j.gameOver(1);
                 return true;
             default:
                 return false;
         }
     }
 
-    protected boolean Movimentar(Usuario u, Tabuleiro t) {
+    protected boolean Movimentar(int a, Tabuleiro t) throws GameException {
         Scanner s = new Scanner(System.in);
         int i, l;
         int j, m;
 
-        System.out.println("Vez do jogador " + u.getNome() + " cor = " + u.isCor());
+        System.out.println("Vez do jogador " + this.j.u[a].getNome() + " cor = " + this.j.u[a].isCor());
         System.out.println("Digite a possição da peça a ser movimentada");
         i = s.nextInt();
         String x = s.next();
         j = Character.getNumericValue(x.charAt(0)) - 10;
         i = 8 - i;
 
-        if (t.tab[i][j] == null) {
-            System.out.println("Nenhuma peça selecionada");
-            return false;
-        }
-
-        //NESTA PARTE DEVE SER IMPLEMENTADA TRATAMENTO DE ERROS
-        if (t.tab[i][j].cor != u.isCor()) {
-            System.out.println("Peça pertencente ao oponente");
-            return false;
-        }
+        this.j.PreRegraMovimentacao(t.tab[i][j], a);
 
         System.out.println("Insira a nova posição");
         l = s.nextInt();
@@ -71,39 +62,15 @@ public class Fachada {
         m = Character.getNumericValue(x.charAt(0)) - 10;
         l = 8 - l;
 
-        if (t.tab[i][j].Mover((byte) l, (byte) m, t)) {
-            t.tab[i][j] = null;
-            return true;
-        }
-        return false;
+        this.j.RegraMovimentacao(t.tab[i][j], (byte) l, (byte) m, t);
+
+        t.tab[i][j].Mover((byte) l, (byte) m, t);
+
+        return true;
+
     }
 
     protected void imprimirTabuleiro(Tabuleiro t) {
-        
-         /* while (true){
-				String arg1="";
-				String arg2="";	
-				String message =JOptionPane.showInputDialog(T);
-				try{
-					arg1=message.substring(0,2);
-					arg2=message.substring(2,4);
-					Posicao k = Posicao.retornarPosicao(arg1);
-					Posicao l = Posicao.retornarPosicao(arg2);
-					Casa a = T.retornarCasa(k);
-					Peca b = a.getPeca();
-					b.moverPeca(k,l,T);
-					
-				}catch(StringIndexOutOfBoundsException si){
-					JOptionPane.showMessageDialog(null,"Entre com o formato correto de casas\nExemplo: a1b5");
-				}
-		*		catch(ArrayIndexOutOfBoundsException ai){
-		*			JOptionPane.showMessageDialog(null,"Entre com o formato correto de casas\nExemplo: a1b5");
-		*		}	
-		*		catch(NullPointerException npe){
-		*		JOptionPane.showMessageDialog(null,"Uma das casas escolhidas é inválida!");
-		*		}
-		*	    
-		}*/
         for (int i = 0; i < 8; i++) {
             System.out.print(8 - i);
             for (int j = 0; j < 8; j++) {
@@ -123,5 +90,4 @@ public class Fachada {
         }
         System.out.println("");
     }
-
 }

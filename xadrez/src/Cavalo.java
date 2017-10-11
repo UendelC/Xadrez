@@ -7,27 +7,34 @@ package xadrez;
 
 public class Cavalo extends Peca {
 
-    public Cavalo(byte x, byte y, boolean cor) {
-        super(x, y, cor);
+    public Cavalo(byte i, byte j, boolean cor) {
+        super(i, j, cor);
     }
 
     @Override
-    boolean caminhoValido(byte x, byte y) {
+    boolean caminhoValido(byte i, byte j, Tabuleiro t) {
         boolean a;
         a = false;
-        if((posicao[1]==y+2 && posicao[0]==x+1)||(posicao[1]==y+2 && posicao[0]==x-1)||(posicao[1]==y+1 &&
-        posicao[0]==x+2)||(posicao[1]==y+1 && posicao[0]==x-2)||(posicao[1]==y-1 && posicao[0]==x+2)||(posicao[1]==y-1 &&
-            posicao[0]==x-2)||(posicao[1]==y-2 && posicao[0]==x+1)||(posicao[1]==y-2 && posicao[0]==x-1)){
-        a = true;
-        }   
+
+        if (Math.abs(this.posicao[0] - i) == 2) {
+            if (Math.abs(this.posicao[1] - j) == 1) {
+                a = true;
+            }
+        }
+
+        if (Math.abs(this.posicao[1] - j) == 2) {
+            if (Math.abs(this.posicao[0] - i) == 1) {
+                a = true;
+            }
+        }
         return a;
     }
-    
-     @Override
+
+    @Override
     void putId() {
-        if(this.isCor()){
-            this.setId("\u2658"); 
-        }else{
+        if (this.isCor()) {
+            this.setId("\u2658");
+        } else {
             this.setId("\u265E");
         }
     }

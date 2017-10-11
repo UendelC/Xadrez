@@ -16,7 +16,7 @@ public class Torre extends Peca {
     }
 
     @Override
-    public boolean caminhoValido(byte x, byte y) {
+    public boolean caminhoValido(byte x, byte y, Tabuleiro t) {
         return this.posicao[0] == x ^ this.posicao[1] == y;
     }
 

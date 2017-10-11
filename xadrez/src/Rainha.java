@@ -16,7 +16,7 @@ public class Rainha extends Peca{
     }
     
     @Override
-     boolean caminhoValido(byte x, byte y) {
+     boolean caminhoValido(byte x, byte y, Tabuleiro t) {
         boolean teste1, teste2;
         byte xDiff = (byte) Math.abs(x - this.posicao[0]);
 	    byte yDiff = (byte) Math.abs(y - this.posicao[1]);

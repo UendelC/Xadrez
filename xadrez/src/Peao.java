@@ -1,12 +1,12 @@
 package xadrez;
 
-public class Peao extends Peca{
+public class Peao extends Peca {
 
     boolean firstMov;
 
-    public Peao(byte x, byte y, boolean cor) {
-        super(x, y, cor);
-        this.firstMov = false;
+    public Peao(byte i, byte j, boolean cor) {
+        super(i, j, cor);
+        this.firstMov = true;
     }
 
     private boolean mover() {
@@ -14,25 +14,37 @@ public class Peao extends Peca{
     }
 
     @Override
-   boolean caminhoValido(byte x, byte y) {
-        if(posicao[1]==y && (x-posicao[0])<2){
-            if(firstMov && (x-posicao[0])==2){
-                firstMov = false;
+    boolean caminhoValido(byte i, byte j, Tabuleiro t) {
+        if (Math.abs(i - this.posicao[0]) == 2) {
+            if (this.firstMov) {
+                this.firstMov = false;
                 return true;
             } else {
-                if((x-posicao[0])==1){
-                    return true;
-                }
+                return false;
             }
         }
+
+        if (Math.abs(this.posicao[0] - j) == 1) {
+            if (t.ocupadoAdv(i, j, this)) {
+                this.firstMov = false;
+                return true;
+            }
+            return false;
+        }
+
+        if (Math.abs(i - this.posicao[0]) == 1) {
+            this.firstMov = false;
+            return true;
+        }
+
         return false;
     }
-    
-       @Override
+
+    @Override
     void putId() {
-        if(this.isCor()){
-            this.setId("\u2659"); 
-        }else{
+        if (this.isCor()) {
+            this.setId("\u2659");
+        } else {
             this.setId("\u265F");
         }
     }

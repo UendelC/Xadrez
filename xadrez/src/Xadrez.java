@@ -15,26 +15,20 @@ public class Xadrez {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Usuario u[] = new Usuario[2];
+        
 
         Fachada f = new Fachada();
         Tabuleiro t = new Tabuleiro();
 
-        
-        //UIManager.put("OptionPane.messageFont", new FontUIResource(new Font("SanSerif", Font.PLAIN, 40))); // Aqui você muda o nome e tamanho da fonte.
-        
-        f.setUsuarios(u);
-        
-        
-      
-        
-        
-        
-        while (!f.alguem_Venceu(t, u)) {
+        f.setUsuarios();
+
+        while (!f.alguem_Venceu(t)) {
             for (int i = 0; i < 2; i++) {
-                f.imprimirTabuleiro(t);
-                if (!f.Movimentar(u[i], t)) {
-                    System.out.println("ocorreu um problema");
+                try {
+                    f.imprimirTabuleiro(t);
+                    f.Movimentar(i, t);
+                } catch (GameException e) {
+                    System.out.println(e.getMessage());
                     i--;
                 }
             }

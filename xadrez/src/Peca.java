@@ -7,15 +7,15 @@ public abstract class Peca {
     protected boolean status; // false = morto true = vivo
     private String id;
 
-    public Peca(byte x, byte y, boolean cor) {
-        this.posicao[0] = x;
-        this.posicao[1] = y;
+    public Peca(byte i, byte j, boolean cor) {
+        this.posicao[0] = i;
+        this.posicao[1] = j;
         this.cor = cor;
         this.status = true;
         this.putId();
     }
 
-    abstract boolean caminhoValido(byte x, byte y);
+    abstract boolean caminhoValido(byte x, byte y, Tabuleiro t);
 
     abstract void putId();
 
@@ -39,13 +39,14 @@ public abstract class Peca {
         this.cor = cor;
     }
 
-    private byte[] getPosicao() {
-        return this.posicao;
+    protected byte getPosicao(byte x) {
+        return this.posicao[x];
     }
 
-    protected void setPosicao(byte x, byte y) {
-        this.posicao[0] = x;
-        this.posicao[1] = y;
+    protected void setPosicao(byte i, byte j) {
+
+        this.posicao[0] = i;
+        this.posicao[1] = j;
     }
 
     protected boolean isCor() {
@@ -58,19 +59,10 @@ public abstract class Peca {
         return true;
     }
 
-    protected boolean Mover(byte x, byte y, Tabuleiro t) {
-        
-        // if (!this.caminhoValido(x, y)) {
-        //      return false;
-        //  }
-        
-        if (t.ocupado(this, x, y)) {
-            System.out.println("Existe uma peca sua neste local");
-            return false;
-        }
-
-        t.setPeca(this, x, y);
-
+    protected boolean Mover(byte i, byte j, Tabuleiro t) throws GameException {
+        t.tab[this.getPosicao((byte) 0)][this.getPosicao((byte) 1)] = null;
+        t.tab[i][j] = this;
+        this.setPosicao(i, j);
         return true;
     }
 }
