@@ -24,6 +24,9 @@ public class Fachada {
         System.out.println("Digite o ID do segundo jogador");
         name = s.next();
         this.j.u[1] = new Usuario(false, name, 0);
+        Cadastro c = new Cadastro();
+        c.setInfo(this.j.u[0]);
+        c.setInfo(this.j.u[1]);
         return true;
     }
 

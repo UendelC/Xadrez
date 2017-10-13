@@ -11,12 +11,8 @@ package xadrez;
  */
 public interface IRepositorio {
     
-    /**
-     *
-     * @param tab
-     * @param u1
-     * @param u2
-     * @return
-     */
-    boolean saveGame(Tabuleiro tab, Usuario u1, Usuario u2);
+  
+    boolean gravarDados(Usuario u);
+    
+    String lerDados(Usuario u);
 }

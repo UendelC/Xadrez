@@ -11,12 +11,12 @@ package xadrez;
  */
 public class Usuario {
 
-    private  boolean cor;
-    private  String nome;
+    private boolean cor;
+    private String nome;
     private int score; //quantas peças o jogador comeu neste jogo
     private int vitorias;
     private int derrotas;
-    private float  percentual;
+    private float percentual;
 
     protected Usuario(boolean cor, String nome, float percentual) {
         this.cor = cor;
@@ -33,12 +33,20 @@ public class Usuario {
         return vitorias;
     }
 
+    protected void setVitorias(int vitorias) {
+        this.vitorias = vitorias;
+    }
+
     protected void setVitorias() {
         this.vitorias++;
     }
 
     protected int getDerrotas() {
         return derrotas;
+    }
+
+    protected void setDerrotas(int derrotas) {
+        this.derrotas = derrotas;
     }
 
     protected void setDerrotas() {
